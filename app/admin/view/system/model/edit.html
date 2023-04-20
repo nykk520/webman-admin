@@ -1,0 +1,85 @@
+<div class="layuimini-container">
+    <form id="app-form" class="layui-form layuimini-form">
+        
+        <div class="layui-form-item">
+            <label class="layui-form-label">识别id</label>
+            <div class="layui-input-block">
+                <input type="text" name="nid" class="layui-input" lay-verify="required" placeholder="请输入识别id" value="{$row.nid|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="title" class="layui-input"  placeholder="请输入名称" value="{$row.title|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">左侧菜单名称</label>
+            <div class="layui-input-block">
+                <input type="text" name="ntitle" class="layui-input"  placeholder="请输入左侧菜单名称" value="{$row.ntitle|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">表名</label>
+            <div class="layui-input-block">
+                <input type="text" name="table" class="layui-input"  placeholder="请输入表名" value="{$row.table|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">控制器名称（区分大小写）</label>
+            <div class="layui-input-block">
+                <input type="text" name="ctl_name" class="layui-input"  placeholder="请输入控制器名称（区分大小写）" value="{$row.ctl_name|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">状态(1=启用，0=屏蔽)</label>
+            <div class="layui-input-block">
+                <input type="text" name="status" class="layui-input"  placeholder="请输入状态(1=启用，0=屏蔽)" value="{$row.status|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">字段分类，1=系统(不可修改)，0=自定义</label>
+            <div class="layui-input-block">
+                <input type="text" name="ifsystem" class="layui-input"  placeholder="请输入字段分类，1=系统(不可修改)，0=自定义" value="{$row.ifsystem|default=''}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">文档标题重复，1=允许，0=不允许</label>
+            <div class="layui-input-block">
+                <input type="text" name="is_repeat_title" class="layui-input"  placeholder="请输入文档标题重复，1=允许，0=不允许" value="{$row.is_repeat_title|default=''}">
+            </div>
+        </div>
+        <!--<div class="layui-form-item">-->
+        <!--    <label class="layui-form-label">模型是否允许应用于会员投稿发布，1是，0否</label>-->
+        <!--    <div class="layui-input-block">-->
+        <!--        <input type="text" name="is_release" class="layui-input"  placeholder="请输入模型是否允许应用于会员投稿发布，1是，0否" value="{$row.is_release|default=''}">-->
+        <!--    </div>-->
+        <!--</div>-->
+        <!--<div class="layui-form-item">-->
+        <!--    <label class="layui-form-label">缩略图是否应用于会员投稿，1=允许，0=不允许</label>-->
+        <!--    <div class="layui-input-block">-->
+        <!--        <input type="text" name="is_litpic_users_release" class="layui-input"  placeholder="请输入缩略图是否应用于会员投稿，1=允许，0=不允许" value="{$row.is_litpic_users_release|default=''}">-->
+        <!--    </div>-->
+        <!--</div>-->
+        <div class="layui-form-item">
+            <label class="layui-form-label">额外序列化存储数据</label>
+            <div class="layui-input-block">
+                <input type="text" name="data" class="layui-input"  placeholder="请输入额外序列化存储数据" value="{$row.data|default=''}">
+            </div>
+        </div>
+       
+        <div class="layui-form-item">
+            <label class="layui-form-label">排序</label>
+            <div class="layui-input-block">
+                <input type="text" name="sort_order" class="layui-input"  placeholder="请输入排序" value="{$row.sort_order|default=''}">
+            </div>
+        </div>
+       
+        <div class="hr-line"></div>
+        <div class="layui-form-item text-center">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit>确认</button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">重置</button>
+        </div>
+
+    </form>
+</div>

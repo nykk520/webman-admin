@@ -1,0 +1,153 @@
+{if !empty($field)}
+{volist name="field" id="f"}
+    
+    {switch $f.dtype}
+        {case text}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block">
+                    <input type="text" name="fieldExt[{$f.title}]" class="layui-input"  placeholder="请输入{$f.name}" value="{$row[$f['title']]}">
+                </div>
+            </div>
+        {/case}
+        {case checkbox}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block">
+                    {volist name=":explode(',', $f['dfvalue'])" id="v1"}
+                        <input type="checkbox" name="fieldExt[{$f.title}][{$v1}]" {if in_array($v,$row[$f['title']])}checked=""{/if} value="{$v1}" title="{$v1}">
+                    {/volist}
+                </div>
+            </div>
+        {/case}
+        {case multitext}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block">
+                    <textarea name="fieldExt[{$f.title}]" class="layui-textarea" placeholder="请输入{$f.name}"  rows="8" cols="40">{$row[$f['title']]}</textarea>
+                </div>
+            </div>
+        {/case}
+        {case radio}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block">
+                    {volist name=":explode(',', $f['dfvalue'])" id="v2"}
+                        <input type="radio" name="fieldExt[{$f.title}]" {if $row[$f['title']] == $v2}checked=""{/if} value="{$v2}" title="{$v2}">
+                    {/volist}
+                </div>
+            </div>
+        {/case}
+        {case switch}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block">
+                    <input type="radio" name="fieldExt[{$f.title}]" {if $row[$f['title']] == 1}checked=""{/if} value="1" title="开">
+                    <input type="radio" name="fieldExt[{$f.title}]" {if $row[$f['title']] == 0}checked=""{/if} value="0" title="关">
+                </div>
+            </div>
+        {/case}
+        {case select}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block">
+                    <select name="fieldExt[{$f.title}]" id="">
+                        {volist name=":explode(',', $f['dfvalue'])" id="v3"}
+                             <option {if $row[$f['title']]== $v3}selected{/if} value="{$v3}">{$v3}</option>
+                        {/volist}
+                    </select>
+                </div>
+            </div>
+        {/case}
+        {case img}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block layuimini-upload">
+                    <input name="fieldExt[{$f.title}]" id="fieldExt_{$f.title}" class="layui-input layui-col-xs6"  placeholder="请上传{$f.name}" value="{$row[$f['title']]}">
+                    <div class="layuimini-upload-btn">
+                        <span><a class="layui-btn" data-upload-id="fieldExt_{$f.title}" data-upload="fieldExt[{$f.title}]" data-upload-number="one" data-upload-exts="png|jpg|ico|jpeg|gif" data-upload-icon="image"><i class="fa fa-upload"></i> 上传</a></span>
+                        <span><a class="layui-btn layui-btn-normal" data-upload-id="fieldExt_{$f.title}" id="select_fieldExt_{$f.title}" data-upload-select="fieldExt[{$f.title}]" data-upload-number="one" data-upload-mimetype="image/*"><i class="fa fa-list"></i> 选择</a></span>
+                    </div>
+                </div>
+            </div>
+        {/case}
+        {case int}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block">
+                    <input type="text" name="fieldExt[{$f.title}]" class="layui-input" lay-verify="number"  placeholder="只允许纯数字" value="{$row[$f['title']]}">
+                </div>
+            </div>
+        {/case}
+        {case datetime}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block">
+                    <input type="text" name="fieldExt[{$f.title}]" data-date="" data-date-type="datetime"  value="{$row[$f['title']]}">
+                </div>
+            </div>
+        {/case}
+        {case multitext}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block">
+                    <textarea name="fieldExt[{$f.title}]" class="layui-textarea editor" placeholder="请输入{$f.name}"  rows="20" cols="40">{$row[$f['title']]}</textarea>
+                </div>
+            </div>
+        {/case}
+        {case imgs}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block layuimini-upload">
+                    <input name="fieldExt[{$f.title}]" id="fieldExt_{$f.title}" class="layui-input layui-col-xs6"  placeholder="请上传{$f.name}图片" value="{$row[$f['title']]|default=''}">
+                    <div class="layuimini-upload-btn">
+                        <span><a class="layui-btn" data-upload-id="fieldExt_{$f.title}" data-upload="fieldExt[{$f.title}]" data-upload-number="more" data-upload-exts="png|jpg|ico|jpeg|gif" data-upload-icon="image"><i class="fa fa-upload"></i> 上传</a></span>
+                        <span><a class="layui-btn layui-btn-normal" data-upload-id="fieldExt_{$f.title}" id="select_fieldExt_{$f.title}" data-upload-select="fieldExt[{$f.title}]" data-upload-number="more" data-upload-mimetype="image/*"><i class="fa fa-list"></i> 选择</a></span>
+                    </div>
+                </div>
+            </div>
+        {/case}
+        {case decimal}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block">
+                    <input type="text" name="fieldExt[{$f.title}]" class="layui-input" placeholder="输入金额数字" value="{$row[$f['title']]}">
+                </div>
+            </div>
+        {/case}
+        {case float}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block">
+                    <input type="text" name="fieldExt[{$f.title}]" class="layui-input" placeholder="输入小数" value="{$row[$f['title']]}">
+                </div>
+            </div>
+        {/case}
+        {case file|media}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block layuimini-upload">
+                    <input name="fieldExt[{$f.title}]"  id="fieldExt_{$f.title}" class="layui-input layui-col-xs6"  placeholder="请上传{$f.name}" value="{$row[$f['title']]}">
+                    <div class="layuimini-upload-btn">
+                        <span><a class="layui-btn" data-upload-id="fieldExt_{$f.title}" data-upload="fieldExt[{$f.title}]" data-upload-accept="file" data-upload-number="one" data-upload-exts="{:get_config('file_exts')}" data-upload-icon="file"><i class="fa fa-upload"></i> 上传</a></span>
+                        <span><a class="layui-btn layui-btn-normal" data-upload-id="fieldExt_{$f.title}" id="select_{$f.title}" data-upload-select="fieldExt[{$f.title}]" data-upload-number="one" data-upload-mimetype="*"><i class="fa fa-list"></i> 选择</a></span>
+                    </div>
+                </div>
+            </div>
+        {/case}
+        {case file}
+            <div class="layui-form-item">
+                <label class="layui-form-label">{$f.name}</label>
+                <div class="layui-input-block layuimini-upload">
+                    <input name="fieldExt[{$f.title}]" id="fieldExt_{$f.title}" class="layui-input layui-col-xs6"  placeholder="请上传{$f.name}" value="{$row[$f['title']]}">
+                    <div class="layuimini-upload-btn">
+                        <span><a class="layui-btn" data-upload-id="fieldExt_{$f.title}" data-upload="fieldExt[{$f.title}]" data-upload-accept="file" data-upload-number="one" data-upload-exts="{:get_config('media_exts')}" data-upload-icon="file"><i class="fa fa-upload"></i> 上传</a></span>
+                        <span><a class="layui-btn layui-btn-normal" data-upload-id="fieldExt_{$f.title}" id="select_{$f.title}" data-upload-select="fieldExt[{$f.title}]" data-upload-number="one" data-upload-mimetype="*"><i class="fa fa-list"></i> 选择</a></span>
+                    </div>
+                </div>
+            </div>
+        {/case}
+    {/switch}
+    
+{/volist}
+{/if}

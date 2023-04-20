@@ -1,0 +1,26 @@
+<link rel="stylesheet" href="__STATIC__/admin/css/login.css?v={$version}" media="all">
+<div class="main-body">
+    <div class="login-main">
+        <div class="login-top">
+            <span>{:sysconfig('site','site_name')}</span>
+            <span class="bg1"></span>
+            <span class="bg2"></span>
+        </div>
+        <form class="layui-form login-bottom">
+            
+            <div class="center">
+
+                <div class="item">
+                    <span class="icon icon-2"></span>
+                    <input type="text" name="gcode" lay-verify="required"  placeholder="输入谷歌验证码" maxlength="24"/>
+                </div>
+            </div>
+            <div class="layui-form-item" style="text-align:center; width:100%;height:100%;margin:0px;">
+                <button class="login-btn" lay-submit>立即登录</button>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="footer">
+    {:sysconfig('site','site_copyright')}<span class="padding-5">|</span><a target="_blank" href="http://www.miitbeian.gov.cn">{:sysconfig('site','site_beian')}</a>
+</div>
